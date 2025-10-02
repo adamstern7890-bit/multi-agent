@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi-Agent Task Solver</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="logo">Multi‑Agent Task Solver</div>
+        <div class="subtitle">Give a high‑level request. Watch agents plan, work, and deliver in real time.</div>
+      </header>
+
+      <main class="main">
+        <section class="panel input-panel">
+          <form id="request-form">
+            <label class="label" for="request">Business request</label>
+            <textarea id="request" name="request" placeholder="e.g., Summarize the last 3 quarters’ financial trends and create a chart" required></textarea>
+            <div class="form-row">
+              <label class="label inline"><input type="checkbox" id="simulate-errors" /> Simulate errors</label>
+              <label class="label inline">Fail rate <input type="range" id="fail-rate" min="0" max="1" step="0.05" value="0.15" /></label>
+            </div>
+            <div class="actions">
+              <button id="submit-btn" type="submit">Run</button>
+              <button id="reset-btn" type="button" class="secondary" disabled>Reset</button>
+              <button id="cancel-btn" type="button" class="secondary" disabled>Cancel</button>
+              <button id="retry-btn" type="button" class="secondary" disabled>Retry</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel status-panel">
+          <div class="status-header">
+            <div class="status-title">Execution Timeline</div>
+            <div id="job-meta" class="job-meta"></div>
+            <div id="conn-status" class="pill">Idle</div>
+          </div>
+          <div id="timeline" class="timeline"></div>
+        </section>
+
+        <section class="panel result-panel">
+          <div class="status-header">
+            <div class="status-title">Final Result</div>
+            <div id="result-status" class="result-status muted">Waiting for job...</div>
+          </div>
+          <div id="result" class="result"></div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Built with SSE, vanilla JS, and ❤️</span>
+      </footer>
+    </div>
+
+    <script src="/main.js"></script>
+  </body>
+  </html>
+
+
